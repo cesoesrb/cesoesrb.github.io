@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CesoES | Roblox Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* GENEL AYARLAR */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f6fa; /* Hafif gri arka plan */
+            color: #333;
+        }
+        
+        /* RENK PALETİ: Turuncu ve Beyaz */
+        :root {
+            --ana-renk: #ff7f50; /* Mercan Turuncusu */
+            --koyu-turuncu: #ff6348;
+            --beyaz: #ffffff;
+            --koyu-yazi: #2f3542;
+        }
+
+        /* MENU (NAVBAR) */
+        .navbar {
+            background-color: var(--ana-renk);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .navbar a {
+            color: var(--beyaz);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .navbar a:hover {
+            color: #dfe4ea;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* HEADER (LOGO VE BAŞLIK) */
+        .header {
+            background: linear-gradient(135deg, var(--ana-renk), var(--koyu-turuncu));
+            color: var(--beyaz);
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom-left-radius: 50% 20px;
+            border-bottom-right-radius: 50% 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* BÖLÜM STİLLERİ */
+        .section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background: var(--beyaz);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .section h2 {
+            color: var(--koyu-turuncu);
+            border-bottom: 2px solid var(--ana-renk);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* DUYURULAR KUTUSU */
+        .announcement-box {
+            border-left: 5px solid var(--ana-renk);
+            background-color: #fff0e6;
+            padding: 15px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        /* ÜRÜNLER (KARTLAR) */
+        .products-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            width: 250px;
+            padding: 15px;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3);
+        }
+        .product-img {
+            width: 100%;
+            height: 150px;
+            background-color: #eee; /* Resim yoksa gri durur */
+            border-radius: 5px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+        .btn-buy {
+            display: block;
+            background-color: var(--ana-renk);
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .btn-buy:hover { background-color: var(--koyu-turuncu); }
+
+        /* İLETİŞİM */
+        .contact-links a {
+            display: inline-block;
+            margin: 10px;
+            font-size: 1.2rem;
+            color: var(--koyu-yazi);
+            text-decoration: none;
+        }
+        .contact-links i {
+            color: var(--ana-renk);
+            margin-right: 5px;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="#duyurular">Duyurular</a>
+        <a href="#urunler">Ürünler</a>
+        <a href="#bizkimiz">Biz Kimiz?</a>
+        <a href="#iletisim">İletişim</a>
+    </div>
+
+    <div class="header">
+        <h1>CESO ES</h1>
+        <p>Roblox Community & Development</p>
+    </div>
+
+    <div id="duyurular" class="section">
+        <h2>📢 Duyurular</h2>
+        <div class="announcement-box">
+            <h3>🔥 Yeni Site Yayında!</h3>
+            <p>Web sitemiz yeni tasarımıyla açılmıştır. Tüm ürünlere buradan ulaşabilirsiniz.</p>
+        </div>
+        <div class="announcement-box">
+            <h3>🎮 Turnuva Yaklaşıyor</h3>
+            <p>CESO ES Kış Turnuvası kayıtları yakında başlıyor. Discord'u takipte kalın.</p>
+        </div>
+    </div>
+
+    <div id="urunler" class="section">
+        <h2>🛒 Ürünlerimiz</h2>
+        <p>Satın almak için ürüne tıklayıp Roblox/Patreon sayfasına gidebilirsiniz.</p>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://tr.rbxcdn.com/7346761665f8a027962804b087032174/150/150/AvatarHeadshot/Png" class="product-img" alt="Ürün 1">
+                <h3>Admin Script V1</h3>
+                <p>Gelişmiş admin paneli.</p>
+                <a href="https://www.roblox.com/games/..." class="btn-buy">İncele & Al</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://tr.rbxcdn.com/7346761665f8a027962804b087032174/150/150/AvatarHeadshot/Png" class="product-img" alt="Ürün 2">
+                <h3>Özel Pet Sistemi</h3>
+                <p>Oyununuz için pet sistemi.</p>
+                <a href="#" class="btn-buy">İncele & Al</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="bizkimiz" class="section">
+        <h2>👥 Biz Kimiz?</h2>
+        <p>
+            CesoES, Roblox platformunda yenilikçi oyunlar ve scriptler geliştiren bir topluluktur. 
+            Amacımız oyunculara en kaliteli deneyimi sunmak ve geliştiricilere yardımcı araçlar sağlamaktır.
+        </p>
+        <p>Kurucu: <strong>Cesurşah (ceshur45a)</strong></p>
+    </div>
+
+    <div id="iletisim" class="section">
+        <h2>📞 İletişim</h2>
+        <div class="contact-links">
+            <p>
+                <a href="mailto:cesoesroblox@outlook.com">
+                    <i class="fas fa-envelope"></i> cesoesroblox@outlook.com
+                </a>
+            </p>
+            <p>
+                <a href="https://www.roblox.com/communities/6880122/CESO-ES#!/about" target="_blank">
+                    <i class="fas fa-users"></i> Roblox Grubumuza Katıl
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 CESO ES. Tüm hakları saklıdır.
+    </div>
+
+</body>
+</html>

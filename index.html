@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CesoES | Roblox Community</title>
+    <title>CesoES | Roblox Games & UGC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* GENEL AYARLAR */
@@ -11,16 +11,16 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f6fa; /* Hafif gri arka plan */
+            background-color: #f5f6fa;
             color: #333;
+            scroll-behavior: smooth; /* Yumuşak kaydırma */
         }
         
-        /* RENK PALETİ: Turuncu ve Beyaz */
         :root {
-            --ana-renk: #ff7f50; /* Mercan Turuncusu */
+            --ana-renk: #ff7f50; /* CesoES Turuncusu */
             --koyu-turuncu: #ff6348;
             --beyaz: #ffffff;
-            --koyu-yazi: #2f3542;
+            --discord: #5865F2; /* Discord Marka Rengi */
         }
 
         /* MENU (NAVBAR) */
@@ -36,9 +36,9 @@
         .navbar a {
             color: var(--beyaz);
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 12px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             transition: 0.3s;
         }
         .navbar a:hover {
@@ -46,27 +46,37 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
-        /* HEADER (LOGO VE BAŞLIK) */
+        /* HEADER (LOGO ve BAŞLIK) */
         .header {
             background: linear-gradient(135deg, var(--ana-renk), var(--koyu-turuncu));
             color: var(--beyaz);
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             border-bottom-left-radius: 50% 20px;
             border-bottom-right-radius: 50% 20px;
         }
+        .logo-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 15px;
+            background-color: white;
+            object-fit: cover; /* Resmi yuvarlağa sığdırır */
+        }
         .header h1 {
             margin: 0;
-            font-size: 3.5rem;
+            font-size: 3rem;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
         .header p {
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-top: 5px;
         }
         
-        /* BÖLÜM STİLLERİ */
+        /* BÖLÜM KUTULARI */
         .section {
             max-width: 1000px;
             margin: 40px auto;
@@ -84,73 +94,106 @@
             margin-bottom: 20px;
         }
 
-        /* DUYURULAR KUTUSU */
+        /* DUYURU KUTUSU */
         .announcement-box {
             border-left: 5px solid var(--ana-renk);
             background-color: #fff0e6;
             padding: 15px;
             text-align: left;
             margin-bottom: 10px;
+            border-radius: 0 5px 5px 0;
         }
 
-        /* ÜRÜNLER (KARTLAR) */
-        .products-grid {
+        /* KARTLAR (OYUN VE ÜRÜNLER İÇİN) */
+        .grid-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
         }
-        .product-card {
+        .card {
             background: #fff;
             border: 1px solid #eee;
             border-radius: 10px;
-            width: 250px;
+            width: 260px;
             padding: 15px;
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .product-card:hover {
+        .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3);
         }
-        .product-img {
+        .card-img {
             width: 100%;
-            height: 150px;
-            background-color: #eee; /* Resim yoksa gri durur */
+            height: 160px;
+            background-color: #f1f1f1;
             border-radius: 5px;
             margin-bottom: 10px;
             object-fit: cover;
         }
-        .btn-buy {
+        .ugc-img { object-fit: contain; } /* UGC resimleri tam sığsın */
+
+        /* BUTONLAR */
+        .btn-action {
             display: block;
             background-color: var(--ana-renk);
             color: white;
-            padding: 10px;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 10px;
+            margin-top: auto;
             font-weight: bold;
+            width: 80%;
+            transition: 0.3s;
         }
-        .btn-buy:hover { background-color: var(--koyu-turuncu); }
+        .btn-action:hover { background-color: var(--koyu-turuncu); }
+        
+        .btn-game { background-color: #27ae60; } /* Oyun butonu yeşil */
+        .btn-game:hover { background-color: #2ecc71; }
 
-        /* İLETİŞİM */
-        .contact-links a {
+        .btn-discord {
             display: inline-block;
-            margin: 10px;
-            font-size: 1.2rem;
-            color: var(--koyu-yazi);
+            background-color: var(--discord);
+            color: white;
+            padding: 12px 25px;
             text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
         }
-        .contact-links i {
-            color: var(--ana-renk);
-            margin-right: 5px;
+        .btn-discord:hover { background-color: #4752c4; transform: scale(1.05); }
+
+        /* İLETİŞİM LİNKLERİ */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            font-size: 1.1rem;
         }
+        .contact-link a {
+            text-decoration: none;
+            color: #333;
+            transition: 0.3s;
+        }
+        .contact-link i {
+            margin-right: 8px;
+            font-size: 1.3rem;
+        }
+        .contact-link a:hover { color: var(--ana-renk); }
 
         /* FOOTER */
         .footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             color: #777;
             font-size: 0.9rem;
+            background-color: #eaeaea;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -158,45 +201,51 @@
 
     <div class="navbar">
         <a href="#duyurular">Duyurular</a>
-        <a href="#urunler">Ürünler</a>
+        <a href="#oyunlar">Oyunlar</a>
+        <a href="#magaza">Mağaza</a>
         <a href="#bizkimiz">Biz Kimiz?</a>
         <a href="#iletisim">İletişim</a>
     </div>
 
     <div class="header">
+        <img src="logo.png" alt="CesoES Logo" class="logo-img">
         <h1>CESO ES</h1>
-        <p>Roblox Community & Development</p>
+        <p>Roblox Games, Clothing & UGC</p>
     </div>
 
     <div id="duyurular" class="section">
         <h2>📢 Duyurular</h2>
         <div class="announcement-box">
-            <h3>🔥 Yeni Site Yayında!</h3>
-            <p>Web sitemiz yeni tasarımıyla açılmıştır. Tüm ürünlere buradan ulaşabilirsiniz.</p>
-        </div>
-        <div class="announcement-box">
-            <h3>🎮 Turnuva Yaklaşıyor</h3>
-            <p>CESO ES Kış Turnuvası kayıtları yakında başlıyor. Discord'u takipte kalın.</p>
+            <h3>🚀 Geliştirmeler Devam Ediyor</h3>
+            <p>Yeni oyun projelerimiz, kıyafetler ve UGC tasarımlarımız üzerinde son hızla çalışıyoruz. Discord sunucumuza gelerek haberdar olabilirsiniz!</p>
         </div>
     </div>
 
-    <div id="urunler" class="section">
-        <h2>🛒 Ürünlerimiz</h2>
-        <p>Satın almak için ürüne tıklayıp Roblox/Patreon sayfasına gidebilirsiniz.</p>
+    <div id="oyunlar" class="section">
+        <h2>🎮 Oyunlarımız</h2>
+        <p>Geliştirdiğimiz Roblox oyunlarına buradan göz atabilirsiniz.</p>
         
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="https://tr.rbxcdn.com/7346761665f8a027962804b087032174/150/150/AvatarHeadshot/Png" class="product-img" alt="Ürün 1">
-                <h3>Admin Script V1</h3>
-                <p>Gelişmiş admin paneli.</p>
-                <a href="https://www.roblox.com/games/..." class="btn-buy">İncele & Al</a>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://tr.rbxcdn.com/7346761665f8a027962804b087032174/150/150/AvatarHeadshot/Png" class="card-img" alt="Oyun Resmi">
+                <h3>Oyun İsmi</h3>
+                <p>Oyun hakkında kısa açıklama buraya gelecek.</p>
+                <a href="#" class="btn-action btn-game">🎮 Oyna</a>
             </div>
+            
+            </div>
+    </div>
 
-            <div class="product-card">
-                <img src="https://tr.rbxcdn.com/7346761665f8a027962804b087032174/150/150/AvatarHeadshot/Png" class="product-img" alt="Ürün 2">
-                <h3>Özel Pet Sistemi</h3>
-                <p>Oyununuz için pet sistemi.</p>
-                <a href="#" class="btn-buy">İncele & Al</a>
+    <div id="magaza" class="section">
+        <h2>👕 Mağaza & UGC</h2>
+        <p>Tasarımını yaptığımız en tarz kıyafetler ve aksesuarlar.</p>
+        
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://tr.rbxcdn.com/7346761665f8a027962804b087032174/150/150/AvatarHeadshot/Png" class="card-img ugc-img" alt="UGC">
+                <h3>CesoES Hoodie</h3>
+                <p>Özel Tasarım</p>
+                <a href="https://www.roblox.com/groups/6880122/CESO-ES#!/store" target="_blank" class="btn-action">Roblox'ta Gör</a>
             </div>
         </div>
     </div>
@@ -204,26 +253,37 @@
     <div id="bizkimiz" class="section">
         <h2>👥 Biz Kimiz?</h2>
         <p>
-            CesoES, Roblox platformunda yenilikçi oyunlar ve scriptler geliştiren bir topluluktur. 
-            Amacımız oyunculara en kaliteli deneyimi sunmak ve geliştiricilere yardımcı araçlar sağlamaktır.
+            CesoES, Roblox platformunda hem yenilikçi oyunlar geliştiren hem de kaliteli UGC/kıyafet tasarımları üreten bir topluluktur. 
+            Amacımız oyunculara eğlenceli dünyalar sunmak ve tarzlarını yansıtmalarını sağlamaktır.
         </p>
-        <p>Kurucu: <strong>Cesurşah (ceshur45a)</strong></p>
+        <p>Kurucu: <strong>TrickHost (ceshur45a)</strong></p>
+        <br>
+        <a href="https://discord.gg/QG7s4FNnsr" target="_blank" class="btn-discord">
+            <i class="fab fa-discord"></i> Discord Sunucumuza Katıl
+        </a>
     </div>
 
     <div id="iletisim" class="section">
         <h2>📞 İletişim</h2>
-        <div class="contact-links">
-            <p>
-                <a href="mailto:cesoesroblox@outlook.com">
-                    <i class="fas fa-envelope"></i> cesoesroblox@outlook.com
-                </a>
-            </p>
-            <p>
-                <a href="https://www.roblox.com/communities/6880122/CESO-ES#!/about" target="_blank">
-                    <i class="fas fa-users"></i> Roblox Grubumuza Katıl
-                </a>
-            </p>
+        
+        <div class="contact-link">
+            <a href="mailto:cesoesroblox@outlook.com">
+                <i class="fas fa-envelope" style="color: #333;"></i> cesoesroblox@outlook.com
+            </a>
         </div>
+        
+        <div class="contact-link">
+            <a href="https://www.roblox.com/communities/6880122/CESO-ES#!/about" target="_blank">
+                <i class="fas fa-users" style="color: #ff7f50;"></i> Roblox Grubu
+            </a>
+        </div>
+
+        <div class="contact-link">
+            <a href="https://discord.gg/QG7s4FNnsr" target="_blank">
+                <i class="fab fa-discord" style="color: #5865F2;"></i> Discord Sunucusu
+            </a>
+        </div>
+
     </div>
 
     <div class="footer">

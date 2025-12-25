@@ -27,7 +27,7 @@
         .section { max-width: 800px; margin: 40px auto; padding: 30px; background: var(--beyaz); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
         .section h2 { color: var(--koyu-turuncu); border-bottom: 2px solid var(--ana-renk); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
 
-        /* --- DİNAMİK DUYURU STİLLERİ (BURAYI EKLEDİM) --- */
+        /* --- DİNAMİK DUYURU STİLLERİ --- */
         .featured-news { border: 2px solid var(--ana-renk); border-radius: 10px; overflow: hidden; text-align: left; background: #fff; margin-bottom: 10px; }
         .news-img { width: 100%; height: 250px; object-fit: cover; display: block; }
         .news-content { padding: 20px; }
@@ -167,11 +167,15 @@
                 const response = await fetch(SHEET_URL);
                 const data = await response.text();
                 
-                // CSV'yi ayır
+                // --- DÜZELTİLEN KISIM BAŞLANGIÇ ---
+                // CSV'yi ayır (Artık boşluklarda bölmeyecek, sadece virgül!)
                 const rows = data.split("\n").map(row => {
-                    const matches = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-                    return matches ? matches.map(m => m.replace(/^"|"$/g, '')) : [];
+                    // Bu yeni kod virgülleri ayırır ama tırnak içindeki virgüllere dokunmaz.
+                    const matches = row.match(/(".*?"|[^,]+)(?=\s*,|\s*$)/g);
+                    // Tırnak işaretlerini temizle
+                    return matches ? matches.map(m => m.replace(/^"|"$/g, '').trim()) : [];
                 });
+                // --- DÜZELTİLEN KISIM BİTİŞ ---
 
                 // Başlığı at ve boşları temizle
                 const temizVeri = rows.slice(1).filter(r => r.length >= 3);

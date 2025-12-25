@@ -9,171 +9,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* GENEL AYARLAR */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f6fa;
-            color: #333;
-            scroll-behavior: smooth;
-        }
-        
-        :root {
-            --ana-renk: #ff7f50; /* CesoES Turuncusu */
-            --koyu-turuncu: #ff6348;
-            --beyaz: #ffffff;
-            --discord: #5865F2;
-        }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f6fa; color: #333; scroll-behavior: smooth; }
+        :root { --ana-renk: #ff7f50; --koyu-turuncu: #ff6348; --beyaz: #ffffff; --discord: #5865F2; }
 
         /* MENU (NAVBAR) */
-        .navbar {
-            background-color: var(--ana-renk);
-            padding: 15px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .navbar a {
-            color: var(--beyaz);
-            text-decoration: none;
-            margin: 0 12px;
-            font-weight: bold;
-            font-size: 1.05rem;
-            transition: 0.3s;
-        }
-        .navbar a:hover {
-            color: #dfe4ea;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
+        .navbar { background-color: var(--ana-renk); padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .navbar a { color: var(--beyaz); text-decoration: none; margin: 0 12px; font-weight: bold; font-size: 1.05rem; transition: 0.3s; }
+        .navbar a:hover { color: #dfe4ea; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
 
         /* HEADER */
-        .header {
-            background: linear-gradient(135deg, var(--ana-renk), var(--koyu-turuncu));
-            color: var(--beyaz);
-            text-align: center;
-            padding: 40px 20px;
-            border-bottom-left-radius: 50% 20px;
-            border-bottom-right-radius: 50% 20px;
-        }
-        .logo-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin-bottom: 15px;
-            background-color: white;
-            object-fit: cover;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
+        .header { background: linear-gradient(135deg, var(--ana-renk), var(--koyu-turuncu)); color: var(--beyaz); text-align: center; padding: 40px 20px; border-bottom-left-radius: 50% 20px; border-bottom-right-radius: 50% 20px; }
+        .logo-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid white; margin-bottom: 15px; background-color: white; object-fit: cover; }
+        .header h1 { margin: 0; font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+        .header p { font-size: 1.2rem; opacity: 0.9; margin-top: 5px; }
         
         /* BÖLÜM KUTULARI */
-        .section {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            background: var(--beyaz);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        .section h2 {
-            color: var(--koyu-turuncu);
-            border-bottom: 2px solid var(--ana-renk);
-            display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-        }
+        .section { max-width: 800px; margin: 40px auto; padding: 30px; background: var(--beyaz); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
+        .section h2 { color: var(--koyu-turuncu); border-bottom: 2px solid var(--ana-renk); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
 
-        /* DUYURULAR */
-        .announcement-box {
-            border-left: 5px solid var(--ana-renk);
-            background-color: #fff0e6;
-            padding: 15px;
-            text-align: left;
-            margin-bottom: 10px;
-            border-radius: 0 5px 5px 0;
-        }
+        /* --- DİNAMİK DUYURU STİLLERİ (BURAYI EKLEDİM) --- */
+        .featured-news { border: 2px solid var(--ana-renk); border-radius: 10px; overflow: hidden; text-align: left; background: #fff; margin-bottom: 10px; }
+        .news-img { width: 100%; height: 250px; object-fit: cover; display: block; }
+        .news-content { padding: 20px; }
+        .news-date { color: #888; font-size: 0.85rem; margin-bottom: 5px; display: block; }
+        .news-title { color: var(--ana-renk); margin: 0 0 10px 0; font-size: 1.5rem; }
+        .news-desc { color: #555; line-height: 1.6; }
+        .loading { color: #777; font-style: italic; }
 
-        /* YAKINDA KUTUSU */
-        .coming-soon-box {
-            background-color: #f1f2f6;
-            padding: 40px;
-            border-radius: 10px;
-            border: 2px dashed #ccc;
-            color: #777;
-        }
-        .coming-soon-box i {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: var(--ana-renk);
-        }
+        /* ARŞİV VE MODAL */
+        .btn-archive { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #333; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-archive:hover { background-color: var(--ana-renk); }
 
-        /* MAĞAZA BUTONU */
-        .btn-store-big {
-            display: inline-block;
-            background-color: var(--ana-renk);
-            color: white;
-            font-size: 1.2rem;
-            padding: 20px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 127, 80, 0.4);
-            margin-top: 10px;
-        }
-        .btn-store-big:hover {
-            background-color: var(--koyu-turuncu);
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 127, 80, 0.6);
-        }
-        .btn-store-big i { margin-left: 10px; }
+        .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; width: 90%; max-width: 600px; border-radius: 10px; max-height: 70vh; overflow-y: auto; position: relative; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .archive-item { border-bottom: 1px solid #eee; padding: 15px 0; text-align: left; display: flex; gap: 15px; align-items: center; }
+        .archive-thumb { width: 80px; height: 80px; border-radius: 5px; object-fit: cover; background: #ddd; }
+        .archive-text h4 { margin: 0 0 5px 0; color: #333; }
 
-        /* BUTONLAR */
-        .btn-discord {
-            display: inline-block;
-            background-color: var(--discord);
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: 0.3s;
-        }
+        /* DİĞERLERİ */
+        .coming-soon-box { background-color: #f1f2f6; padding: 40px; border-radius: 10px; border: 2px dashed #ccc; color: #777; }
+        .coming-soon-box i { font-size: 3rem; margin-bottom: 10px; color: var(--ana-renk); }
+
+        .btn-store-big { display: inline-block; background-color: var(--ana-renk); color: white; font-size: 1.2rem; padding: 20px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 127, 80, 0.4); margin-top: 10px; }
+        .btn-store-big:hover { background-color: var(--koyu-turuncu); transform: scale(1.05); box-shadow: 0 8px 20px rgba(255, 127, 80, 0.6); }
+
+        .btn-discord { display: inline-block; background-color: var(--discord); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
         .btn-discord:hover { background-color: #4752c4; transform: scale(1.05); }
 
-        /* İLETİŞİM */
         .contact-link { margin: 10px 0; }
-        .contact-link a {
-            text-decoration: none;
-            color: #333;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
+        .contact-link a { text-decoration: none; color: #333; font-size: 1.1rem; transition: 0.3s; }
         .contact-link a:hover { color: var(--ana-renk); }
         .contact-link i { margin-right: 8px; }
 
-        .footer {
-            text-align: center;
-            padding: 30px;
-            color: #777;
-            font-size: 0.9rem;
-            background-color: #eaeaea;
-            margin-top: 40px;
-        }
+        .footer { text-align: center; padding: 30px; color: #777; font-size: 0.9rem; background-color: #eaeaea; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -194,9 +83,23 @@
 
     <div id="duyurular" class="section">
         <h2>📢 Duyurular</h2>
-        <div class="announcement-box">
-            <h3>🚀 Geliştirmeler Devam Ediyor</h3>
-            <p>Yeni oyun projelerimiz, kıyafetler ve UGC tasarımlarımız üzerinde son hızla çalışıyoruz. Discord sunucumuza gelerek haberdar olabilirsiniz!</p>
+        
+        <div id="son-duyuru-kutusu">
+            <p class="loading">Haberler yükleniyor...</p>
+        </div>
+
+        <div id="arsiv-btn-alan" style="display:none;">
+            <a onclick="arsiviAc()" class="btn-archive">
+                <i class="fas fa-history"></i> Eski Duyuruları Gör
+            </a>
+        </div>
+    </div>
+
+    <div id="arsivModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="arsiviKapat()">&times;</span>
+            <h2>📜 Duyuru Arşivi</h2>
+            <div id="arsiv-listesi"></div>
         </div>
     </div>
 
@@ -254,6 +157,79 @@
     <div class="footer">
         &copy; 2025 CESO ES. Tüm hakları saklıdır.
     </div>
+
+    <script>
+        // SENİN TABLO LİNKİN
+        const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9HwxrKSq-te9r6bJoZ0E8ReVSmXZ-cAbt0SE0ieaDe3LhYJGKQWdsTFTrybUqvwTLijtdyVoorARt/pub?output=csv";
+
+        async function haberleriGetir() {
+            try {
+                const response = await fetch(SHEET_URL);
+                const data = await response.text();
+                
+                // CSV'yi ayır
+                const rows = data.split("\n").map(row => {
+                    const matches = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+                    return matches ? matches.map(m => m.replace(/^"|"$/g, '')) : [];
+                });
+
+                // Başlığı at ve boşları temizle
+                const temizVeri = rows.slice(1).filter(r => r.length >= 3);
+                temizVeri.reverse(); // En yeni en üste
+
+                if (temizVeri.length > 0) {
+                    const enYeni = temizVeri[0];
+                    
+                    // [0]=Başlık, [1]=Resim, [2]=Açıklama, [3]=Tarih
+                    document.getElementById("son-duyuru-kutusu").innerHTML = `
+                        <div class="featured-news">
+                            <img src="${enYeni[1]}" class="news-img" onerror="this.src='https://via.placeholder.com/800x400?text=CesoES+Haber'">
+                            <div class="news-content">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> ${enYeni[3] || ''}</span>
+                                <h3 class="news-title">${enYeni[0]}</h3>
+                                <p class="news-desc">${enYeni[2]}</p>
+                            </div>
+                        </div>
+                    `;
+
+                    // Eskileri Arşive At
+                    if (temizVeri.length > 1) {
+                        document.getElementById("arsiv-btn-alan").style.display = "block";
+                        const arsivKutusu = document.getElementById("arsiv-listesi");
+                        arsivKutusu.innerHTML = "";
+
+                        for (let i = 1; i < temizVeri.length; i++) {
+                            const eski = temizVeri[i];
+                            arsivKutusu.innerHTML += `
+                                <div class="archive-item">
+                                    <img src="${eski[1]}" class="archive-thumb" onerror="this.src='https://via.placeholder.com/80?text=Resim'">
+                                    <div class="archive-text">
+                                        <h4>${eski[0]}</h4>
+                                        <span style="font-size:0.8rem; color:#888;">${eski[3] || ''}</span>
+                                        <p style="font-size:0.85rem; margin:5px 0 0 0; color:#555;">${eski[2].substring(0, 60)}...</p>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
+                } else {
+                    document.getElementById("son-duyuru-kutusu").innerHTML = "<p>Henüz duyuru yok.</p>";
+                }
+
+            } catch (error) {
+                console.error("Hata:", error);
+                document.getElementById("son-duyuru-kutusu").innerHTML = "<p>Duyurular yüklenemedi.</p>";
+            }
+        }
+
+        haberleriGetir();
+
+        // Modal (Popup) Aç/Kapa
+        const modal = document.getElementById("arsivModal");
+        function arsiviAc() { modal.style.display = "block"; }
+        function arsiviKapat() { modal.style.display = "none"; }
+        window.onclick = function(e) { if(e.target == modal) modal.style.display = "none"; }
+    </script>
 
 </body>
 </html>
